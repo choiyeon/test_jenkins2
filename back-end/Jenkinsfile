@@ -25,7 +25,8 @@ pipeline {
                 script{
                     def mvnHome = tool name:'Maven', type:'hudson.tasks.Maven$MavenInstallation'
                     withEnv(["MAVEN_HOME=${mvnHome}"]){
-                        bat "\"${mvnHome}\\bin\\mvn\" clean package-DskipTests"
+                        //pom.xml에 version노드의 이름으로 war가 target 디렉토리에 생성된다.
+                        bat "\"${mvnHome}\\bin\\mvn\" clean package -DskipTests"
                     } 
                 }
             }
